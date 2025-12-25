@@ -484,5 +484,3 @@ model_df[cols] = scale.fit_transform(model_df[cols])
 
 # final dataset used for model
 st.dataframe(model_df.head(50), width="stretch")
-
-st.divider()

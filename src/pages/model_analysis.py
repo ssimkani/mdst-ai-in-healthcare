@@ -18,7 +18,7 @@ from mapie.metrics.classification import classification_coverage_score
 
 st.set_page_config(page_title="Model Analysis", layout="wide")
 
-st.title("Model Visualizations")
+st.title("Model Analysis")
 st.markdown("### A Random Forest Classifier model trained on the Alzheimer's dataset")
 
 # Preview of data used for model
@@ -100,7 +100,7 @@ ConfusionMatrixDisplay.from_predictions(y_test, y_pred, normalize="true")
 plt.title("Confusion Matrix")
 st.pyplot(plt.gcf(), clear_figure=True, width="stretch")
 
-st.markdown("#### For roughly 10% of patients, our model predicted that they did have Alzheimer's when the didn't and for roughly 1% of patients, our model predicted that they didn't have Alzhiemer's when they did.")
+st.markdown("#### For roughly 10% of patients, our model predicted a false negative and for roughly 1% of patients, our model predicted a false positive.")
 st.divider()
 st.markdown("#### From these confusion matrices, we can see that the model is very accurate when predicting someone doesn't have Alzheimer's than predicting that someone does. The model handles false positives better than it handles false negatives.")
 st.divider()
@@ -175,4 +175,3 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
