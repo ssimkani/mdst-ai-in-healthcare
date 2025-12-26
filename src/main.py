@@ -3,6 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="Home", layout="wide")
 
 st.write("# MDST W26 'AI in Healthcare' Demo")
+st.caption("By Will McKanna and Seena Simkani")
 st.write("### Analyzing data from a synthetic dataset of Alzheimer's patients. A simple Random Forest model is used to predict if an individual has Alzheimer's given a set of cognitive diagnostics/assessments.")
 
 st.divider()
