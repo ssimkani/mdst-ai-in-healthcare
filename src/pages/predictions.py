@@ -15,6 +15,10 @@ shap_values = joblib.load("./data/shap/shap_values.joblib")
 with open("./models/cal_rf.pkl", "rb") as f:
     model = pickle.load(f)
 
+# model for making class predictions or sending to human for review
+with open("./models/bcc_rf.pkl", "rb") as f:
+    bcc = pickle.load(f)
+
 with open("./models/mapie_rf.pkl", "rb") as f:
     mapie = pickle.load(f)
 
@@ -85,6 +89,10 @@ if submitted:
     # Results
     st.markdown(f"### Predicted Class:\n##### {pclass}")
     
+    # send to human for review under certain conditions
+    if bcc.predict(X)[0] == 1:
+      st.markdown("###### It is advised that this patient case be sent for review.")
+    
     st.divider()
 
     st.markdown(f"### Conformal Prediction Set (with a confidence level of 90%):\n ##### {pred_set}")
@@ -94,13 +102,13 @@ if submitted:
     if set_size == 1:
         st.markdown(f"##### The model is 90% confident that the patient has {pclass}.")
     else:
-        st.markdown("###### The model is uncertain about the patient's diagnosis. The patient may or may not have Alzheimer's.")
+        st.markdown("###### The model is uncertain about the patient's diagnosis and it is advised that this case be sent for review.")
         
     st.divider()
     
     # Probability Prediction
     st.markdown(f"### Predicted Probability:\n##### {prob[1]:.2f}")
-    st.markdown(f"##### Interpretation: The patient has a predicted probability of having Alzheimer's of {prob[1]:.2f} (This value isn't well calibrated).")
+    st.markdown(f"##### Interpretation: The patient has a predicted probability of having Alzheimer's of {prob[1]:.2f}.")
     st.divider()
 
     # SHAP
