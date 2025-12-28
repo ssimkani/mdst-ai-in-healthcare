@@ -1,5 +1,5 @@
 
-# MDST W26 'Building Interpretable AI in Healthcare'
+# Michigan Data Science Team W26 'Building Interpretable AI in Healthcare'
 
 By Will McKanna and Seena Simkani
 
